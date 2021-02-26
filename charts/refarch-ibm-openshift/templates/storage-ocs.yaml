@@ -24,7 +24,7 @@ kind: Subscription
 metadata:
   name: ocs-operator
 spec:
-  channel: {{ .Values.ocs.channel }}-stable
+  channel: {{ .Values.ocs.channel }}
   installPlanApproval: Automatic
   name: ocs-operator
   source: redhat-operators

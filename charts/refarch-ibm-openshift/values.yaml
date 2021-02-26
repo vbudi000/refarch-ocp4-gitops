@@ -31,7 +31,7 @@ vsphere:
 
 storage:
   rwxStorageClass: ocs-storagecluster-cephfs
-  rwoStorageClass: asdasd
+  rwoStorageClass: ocs-storagecluster-ceph-rdb
 
 ocs:
   installOCS: true
