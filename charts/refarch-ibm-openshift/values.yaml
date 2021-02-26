@@ -14,12 +14,14 @@ vsphere:
   resourcePool: /dc01/host/cluster01/Resources
   server: vcsa67.rtp.raleigh.ibm.com
   infraNodes:
+    zones: 1
     nodeCount: 3
     diskGiB: 120
     memoryMiB: 16384
     numCPUs: 4
     numCoresPerSocket: 1
   storageNodes:
+    zones: 1
     nodeCount: 3
     diskGiB: 120
     memoryMiB: 65536
@@ -29,3 +31,13 @@ vsphere:
 
 storage:
   rwxStorageClass: ocs-storagecluster-cephfs
+  rwoStorageClass: asdasd
+
+ocs:
+  installOCS: true
+  channel: 4.6-stable
+  version: 4.6.2
+  sizeGiB: 512
+
+
+

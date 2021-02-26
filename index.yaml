@@ -3,24 +3,13 @@ entries:
   refarch-ibm-openshift:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-02-25T23:57:50.123253-04:00"
+    created: "2021-02-26T00:26:24.732179-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: d3608f9291d3b0e1cd1978a318765b41460a1c74b836f93e24f8a35db4b83d18
+    digest: d409fb74f80b8454da7e7dc033a16a1db390851a888c984309c729ca1882a5ec
     name: refarch-ibm-openshift
     type: application
     urls:
-    - https://ncolon.github.io/refarch-ocp4-gitops/refarch-ibm-openshift-0.3.0.tgz
-    version: 0.3.0
-  - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2021-02-25T23:57:50.122876-04:00"
-    description: A Helm chart for deploying infrastrucure reference architecture to
-      OpenShift 4.x clusters
-    digest: d76e4e267fa61a71ec02ff91bb8bf3dcb823f137f70621559552de925033cb63
-    name: refarch-ibm-openshift
-    type: application
-    urls:
-    - https://ncolon.github.io/refarch-ocp4-gitops/refarch-ibm-openshift-0.2.0.tgz
-    version: 0.2.0
-generated: "2021-02-25T23:57:50.121621-04:00"
+    - https://ncolon.github.io/refarch-ocp4-gitops/refarch-ibm-openshift-0.4.0.tgz
+    version: 0.4.0
+generated: "2021-02-26T00:26:24.731575-04:00"
