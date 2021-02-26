@@ -37,7 +37,7 @@ spec:
             name: vsphere-cloud-credentials
           diskGiB: {{ .Values.vsphere.infraNodes.diskGiB }}
           kind: VSphereMachineProviderSpec
-          memoryMiB: {{ .Values.vsphere.infraNodes.memoryMib }}
+          memoryMiB: {{ .Values.vsphere.infraNodes.memoryMiB }}
           metadata:
             creationTimestamp: null
           network:
