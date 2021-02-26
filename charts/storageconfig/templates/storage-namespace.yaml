@@ -10,4 +10,4 @@ metadata:
     helm.sh/hook: pre-install
     helm.sh/hook-weight: "2"
 spec: {}
-{{- endif}}
+{{- end }}
