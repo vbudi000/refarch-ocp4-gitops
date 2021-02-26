@@ -1,0 +1,33 @@
+{{- if .Values.ocs.installOCS }}
+apiVersion: ocs.openshift.io/v1
+kind: StorageCluster
+metadata:
+  name: ocs-storagecluster
+  namespace: openshift-storage
+  annotations:
+    helm.sh/hook: post-install
+    helm.sh/hook-weight: "2"
+spec:
+  externalStorage: {}
+  storageDeviceSets:
+  - config: {}
+    count: 1
+    dataPVCTemplate:
+      metadata:
+        creationTimestamp: null
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: {{ .Values.ocs.sizeGiB }}GiB
+        storageClassName: thin
+        volumeMode: Block
+      status: {}
+    name: ocs-deviceset
+    placement: {}
+    portable: true
+    replica: 3
+    resources: {}
+  version: {{ (split "-" .Values.ocs.channel)._0 }}.0
+{{- end }}

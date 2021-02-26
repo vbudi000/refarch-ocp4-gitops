@@ -1,0 +1,13 @@
+{{- if .Values.ocs.installOCS }}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    openshift.io/cluster-monitoring: "true"
+  name: openshift-storage
+  annotations:
+    helm.sh/hook: pre-install
+    helm.sh/hook-weight: "2"
+spec: {}
+{{- endif}}
