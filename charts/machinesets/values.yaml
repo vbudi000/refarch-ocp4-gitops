@@ -27,17 +27,3 @@ vsphere:
     memoryMiB: 65536
     numCPUs: 16
     numCoresPerSocket: 1
-
-
-storage:
-  rwxStorageClass: ocs-storagecluster-cephfs
-  rwoStorageClass: ocs-storagecluster-ceph-rdb
-
-ocs:
-  installOCS: true
-  channel: 4.6-stable
-  version: 4.6.2
-  sizeGiB: 512
-
-
-
