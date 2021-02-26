@@ -31,32 +31,32 @@ spec:
   sourceNamespace: openshift-marketplace
   startingCSV: ocs-operator.v{{ .Values.ocs.version }}
 ---
-apiVersion: ocs.openshift.io/v1
-kind: StorageCluster
-metadata:
-  name: ocs-storagecluster
-  namespace: openshift-storage
-spec:
-  externalStorage: {}
-  storageDeviceSets:
-  - config: {}
-    count: 1
-    dataPVCTemplate:
-      metadata:
-        creationTimestamp: null
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: {{ .Values.ocs.sizeGiB }}GiB
-        storageClassName: thin
-        volumeMode: Block
-      status: {}
-    name: ocs-deviceset
-    placement: {}
-    portable: true
-    replica: 3
-    resources: {}
-  version: {{ (split "-" .Values.ocs.channel)._0 }}.0
-{{- end }}
+# apiVersion: ocs.openshift.io/v1
+# kind: StorageCluster
+# metadata:
+#   name: ocs-storagecluster
+#   namespace: openshift-storage
+# spec:
+#   externalStorage: {}
+#   storageDeviceSets:
+#   - config: {}
+#     count: 1
+#     dataPVCTemplate:
+#       metadata:
+#         creationTimestamp: null
+#       spec:
+#         accessModes:
+#         - ReadWriteOnce
+#         resources:
+#           requests:
+#             storage: {{ .Values.ocs.sizeGiB }}GiB
+#         storageClassName: thin
+#         volumeMode: Block
+#       status: {}
+#     name: ocs-deviceset
+#     placement: {}
+#     portable: true
+#     replica: 3
+#     resources: {}
+#   version: {{ (split "-" .Values.ocs.channel)._0 }}.0
+# {{- end }}
