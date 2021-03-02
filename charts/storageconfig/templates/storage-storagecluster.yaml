@@ -2,65 +2,31 @@
 apiVersion: ocs.openshift.io/v1
 kind: StorageCluster
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-wave: "3"
   name: ocs-storagecluster
   namespace: openshift-storage
+  annotations:
+    argocd.argoproj.io/sync-wave: ""
 spec:
-  manageNodes: false
-  monPVCTemplate:
-    placement:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: cluster.ocs.openshift.io/storage
-              operator: Equal
-      tolerations:
-      - effect: NoSchedule
-        key: node.ocs.openshift.io/storage
-        operator: Equal
-        value: 'true'
-    metadata:
-      creationTimestamp: null
-    spec:
-      accessModes:
-        - ReadWriteOnce
-        - ReadWriteMany
-      resources:
-        requests:
-          storage: 10Gi
-      storageClassName: thin
-    status: {}
+  externalStorage: {}
   storageDeviceSets:
-    - count: 1
-      dataPVCTemplate:
-        spec:
-          accessModes:
-            - ReadWriteOnce
-            - ReadWriteMany
-          resources:
-            requests:
-              storage: storage: {{ .Values.ocs.sizeGiB }}Gi
-          storageClassName: thin
-          volumeMode: Filesystem
-      name: ocs-deviceset
-      placement:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: cluster.ocs.openshift.io/storage
-                operator: Equal
-        tolerations:
-        - effect: NoSchedule
-          key: node.ocs.openshift.io/storage
-          operator: Equal
-          value: 'true'
-      portable: true
-      replica: 3
-      resources: {}
+  - config: {}
+    count: 1
+    dataPVCTemplate:
+      metadata:
+        creationTimestamp: null
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: {{ .Values.ocs.sizeGiB }}GiB
+        storageClassName: thin
+        volumeMode: Block
+      status: {}
+    name: ocs-deviceset
+    placement: {}
+    portable: true
+    replica: 3
+    resources: {}
+  version: {{ (split "-" .Values.ocs.channel)._0 }}.0
 {{- end }}
-
-
-
