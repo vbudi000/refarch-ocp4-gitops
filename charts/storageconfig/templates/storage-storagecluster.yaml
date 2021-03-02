@@ -28,5 +28,4 @@ spec:
     portable: true
     replica: 3
     resources: {}
-  version: {{ (split "-" .Values.ocs.channel)._0 }}.0
 {{- end }}
