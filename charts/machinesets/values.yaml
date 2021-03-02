@@ -10,8 +10,9 @@ vsphere:
   networkName: vdpg-192.168.100
   datacenter: dc01
   datastore: openshift
-  folder: /dc01/vm/waiops-4cnmf
-  resourcePool: /dc01/host/cluster01/Resources
+  cluster: cluster01
+  # folder: /dc01/vm/waiops-4cnmf
+  # resourcePool: /dc01/host/cluster01/Resources
   server: vcsa67.rtp.raleigh.ibm.com
   infraNodes:
     zones: 1

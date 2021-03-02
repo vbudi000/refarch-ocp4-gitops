@@ -50,6 +50,7 @@ spec:
           workspace:
             datacenter: {{ .Values.vsphere.datacenter }}
             datastore: {{ .Values.vsphere.datastore }}
-            folder: {{ .Values.vsphere.folder }}
-            resourcePool: {{ .Values.vsphere.resourcePool }}
-            server: {{ .Values.vsphere.server }}          {{- end}}
+            folder: /{{ .Values.vsphere.datacenter }}/vm/{{ .Values.infrastructureId }}
+            resourcePool: /{{ .Values.vsphere.datacenter }}/host/{{ .Values.vsphere.cluster }}/Resources
+            server: {{ .Values.vsphere.server }}
+          {{- end}}
