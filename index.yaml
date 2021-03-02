@@ -3,10 +3,10 @@ entries:
   refarch-infraconfig:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-03-02T19:49:01.783304-04:00"
+    created: "2021-03-02T19:49:14.867927-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: a2f9bc60ca5006f670843bca1d39932cc85287e53582c0542d7fbd75313f0fe7
+    digest: 11e17c88587e6536d999dbe92f51e77fab8d2e05736d56cd24257f32453fa292
     name: refarch-infraconfig
     type: application
     urls:
@@ -15,10 +15,10 @@ entries:
   refarch-machinesets:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-03-02T19:49:01.783648-04:00"
+    created: "2021-03-02T19:49:14.868263-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: df73150303d0187b7d6f0b5f268c213e3a237e4fced6bb40acc91b51175325dd
+    digest: 8fe67501028c2468b8a3e4d9fa99f47d5e90d3bfd74a5551e42b635e0341d0a2
     name: refarch-machinesets
     type: application
     urls:
@@ -27,7 +27,18 @@ entries:
   refarch-storageconfig:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-03-02T19:49:01.783965-04:00"
+    created: "2021-03-02T19:49:14.868885-04:00"
+    description: A Helm chart for deploying infrastrucure reference architecture to
+      OpenShift 4.x clusters
+    digest: 20ecfd620f1ac9f90fbd899f953e50df4cb083578bd35d35e86d5d22ad43b282
+    name: refarch-storageconfig
+    type: application
+    urls:
+    - https://ncolon.github.io/refarch-ocp4-gitops/refarch-storageconfig-0.6.5.tgz
+    version: 0.6.5
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-03-02T19:49:14.868566-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
     digest: a73372bdf82aaf90aefce3e1f78962bc63a5913c81241245d60e6dc1b9805dbb
@@ -36,4 +47,4 @@ entries:
     urls:
     - https://ncolon.github.io/refarch-ocp4-gitops/refarch-storageconfig-0.6.4.tgz
     version: 0.6.4
-generated: "2021-03-02T19:49:01.782788-04:00"
+generated: "2021-03-02T19:49:14.867448-04:00"
