@@ -1,12 +1,12 @@
-# {{- if .Values.ocs.installOCS }}
-# ---
-# apiVersion: v1
-# kind: Namespace
-# metadata:
-#   labels:
-#     openshift.io/cluster-monitoring: "true"
-#   name: openshift-storage
-#   annotations:
-#     argocd.argoproj.io/sync-wave: "0"
-# spec: {}
-# {{- end }}
+{{- if .Values.ocs.installOCS }}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    openshift.io/cluster-monitoring: "true"
+  name: openshift-storage
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec: {}
+{{- end }}

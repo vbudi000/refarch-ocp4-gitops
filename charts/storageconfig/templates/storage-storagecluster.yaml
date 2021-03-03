@@ -1,31 +1,32 @@
-# {{- if .Values.ocs.installOCS }}
-# apiVersion: ocs.openshift.io/v1
-# kind: StorageCluster
-# metadata:
-#   name: ocs-storagecluster
-#   namespace: openshift-storage
-#   annotations:
-#     argocd.argoproj.io/sync-wave: "3"
-# spec:
-#   externalStorage: {}
-#   storageDeviceSets:
-#   - config: {}
-#     count: 1
-#     dataPVCTemplate:
-#       metadata:
-#         creationTimestamp: null
-#       spec:
-#         accessModes:
-#         - ReadWriteOnce
-#         resources:
-#           requests:
-#             storage: {{ .Values.ocs.sizeGiB }}GiB
-#         storageClassName: thin
-#         volumeMode: Block
-#       status: {}
-#     name: ocs-deviceset
-#     placement: {}
-#     portable: true
-#     replica: 3
-#     resources: {}
-# {{- end }}
+{{- if .Values.ocs.installOCS }}
+apiVersion: ocs.openshift.io/v1
+kind: StorageCluster
+metadata:
+  name: ocs-storagecluster
+  namespace: openshift-storage
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  externalStorage: {}
+  storageDeviceSets:
+  - config: {}
+    count: 1
+    dataPVCTemplate:
+      metadata:
+        creationTimestamp: null
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: {{ .Values.ocs.sizeGiB }}GiB
+        storageClassName: thin
+        volumeMode: Block
+      status: {}
+    name: ocs-deviceset
+    placement: {}
+    portable: true
+    replica: 3
+    resources: {}
+{{- end }}

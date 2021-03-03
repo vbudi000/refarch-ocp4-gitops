@@ -3,10 +3,10 @@ entries:
   refarch-infraconfig:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-03-02T19:49:14.867927-04:00"
+    created: "2021-03-02T23:00:22.214069-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: 11e17c88587e6536d999dbe92f51e77fab8d2e05736d56cd24257f32453fa292
+    digest: 6c36e6ef8de1fe18604d6db34d72889eb46b04c0f47759f90ba9d4d96ea2942d
     name: refarch-infraconfig
     type: application
     urls:
@@ -15,10 +15,10 @@ entries:
   refarch-machinesets:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-03-02T19:49:14.868263-04:00"
+    created: "2021-03-02T23:00:22.214359-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: 8fe67501028c2468b8a3e4d9fa99f47d5e90d3bfd74a5551e42b635e0341d0a2
+    digest: af067fd1a6986227b9123f022da2267407e6e43541775cad93c6bdb72186e6e4
     name: refarch-machinesets
     type: application
     urls:
@@ -27,10 +27,10 @@ entries:
   refarch-storageconfig:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-03-02T19:49:14.868885-04:00"
+    created: "2021-03-02T23:00:22.215282-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: 20ecfd620f1ac9f90fbd899f953e50df4cb083578bd35d35e86d5d22ad43b282
+    digest: 0aacd50dc19930b545f3165cb91572364b836b26c2489e8bf96457c50885951d
     name: refarch-storageconfig
     type: application
     urls:
@@ -38,7 +38,7 @@ entries:
     version: 0.6.5
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-03-02T19:49:14.868566-04:00"
+    created: "2021-03-02T23:00:22.215015-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
     digest: a73372bdf82aaf90aefce3e1f78962bc63a5913c81241245d60e6dc1b9805dbb
@@ -47,4 +47,4 @@ entries:
     urls:
     - https://ncolon.github.io/refarch-ocp4-gitops/refarch-storageconfig-0.6.4.tgz
     version: 0.6.4
-generated: "2021-03-02T19:49:14.867448-04:00"
+generated: "2021-03-02T23:00:22.213338-04:00"
