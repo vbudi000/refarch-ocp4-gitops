@@ -20,7 +20,7 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: {{ .Values.ocs.sizeGiB }}GiB
+            storage: {{ .Values.ocs.sizeGiB }}Gi
         storageClassName: thin
         volumeMode: Block
       status: {}
