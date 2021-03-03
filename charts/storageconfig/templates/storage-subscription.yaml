@@ -5,6 +5,8 @@ kind: Subscription
 metadata:
   name: ocs-operator
   namespace: openshift-storage
+  labels:
+    operators.coreos.com/ocs-operator.openshift-storage: ""
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
