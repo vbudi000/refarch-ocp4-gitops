@@ -3,6 +3,9 @@
 # Declare variables to be passed into your templates.
 
 
-storage:
-  rwxStorageClass: ocs-storagecluster-cephfs
-  rwoStorageClass: ocs-storagecluster-ceph-rdb
+registry:
+  storageClassName: ocs-storagecluster-cephfs
+  replicas: 2
+
+ingress:
+  replicas: 2

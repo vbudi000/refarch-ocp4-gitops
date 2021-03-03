@@ -17,4 +17,4 @@ spec:
     - effect: NoExecute
       key: infra
       value: reserved
-  replicas: 2
+  replicas: {{ .Values.ingress.replicas }}
