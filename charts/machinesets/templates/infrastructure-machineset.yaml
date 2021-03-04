@@ -1,4 +1,4 @@
-{{ $test:= required "error message" .Values.infrastructureId }}
+{{ $infraid:= required "You need to provide the infrastructureID of your cluster in your values.yaml file" .Values.infrastructureId }}
 apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
