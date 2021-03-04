@@ -30,7 +30,7 @@ vsphere:
     numCoresPerSocket: 1
   cloudpakNodes:
     zones: 1
-    nodeCount: 3
+    nodeCount: 0
     diskGiB: 120
     memoryMiB: 32768
     numCPUs: 8

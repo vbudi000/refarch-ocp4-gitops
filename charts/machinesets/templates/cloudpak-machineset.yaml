@@ -1,4 +1,4 @@
-{{ $test:= required "error message" .Values.infrastructureId }}
+{{ $infraid:= required "You need to provide the infrastructureID of your cluster in your values.yaml file" .Values.infrastructureId }}
 ---
 apiVersion: machineconfiguration.openshift.io/v1
 kind: MachineConfigPool
@@ -22,7 +22,7 @@ metadata:
   name: {{ .Values.infrastructureId }}-cp4x
   namespace: openshift-machine-api
 spec:
-  replicas: 4
+  replicas: {{ .Values.vsphere.cloudpakNodes.nodeCount }}
   selector:
     matchLabels:
       machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId }}
