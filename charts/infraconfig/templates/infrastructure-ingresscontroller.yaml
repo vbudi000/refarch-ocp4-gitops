@@ -1,20 +1,23 @@
-apiVersion: operator.openshift.io/v1
-kind: IngressController
+apiVersion: batch/v1
+kind: Job
 metadata:
-  finalizers:
-  - ingresscontroller.operator.openshift.io/finalizer-ingresscontroller
-  name: default
-  namespace: openshift-ingress-operator
+  name: ingresscontroller-config
+  namespace: tools
 spec:
-  nodePlacement:
-    nodeSelector:
-      matchLabels:
-        node-role.kubernetes.io/infra: ""
-    tolerations:
-    - effect: NoSchedule
-      key: infra
-      value: reserved
-    - effect: NoExecute
-      key: infra
-      value: reserved
-  replicas: {{ .Values.ingress.replicas }}
+  template:
+    spec:
+      containers:
+        - name: config
+          image: quay.io/openshift/origin-cli:latest
+          command: ["oc"]
+          args:
+            - patch
+            - -n
+            - openshift-ingress-operator
+            - ingresscontroller.operator.openshift.io/default
+            - --type=merge
+            - -p
+            - '{"spec": {"replicas": {{ .Values.ingress.replicas | int }}, "nodePlacement": {"nodeSelector": {"matchLabels": {"node-role.kubernetes.io/infra": ""}},"tolerations": [{"effect":"NoSchedule","key": "infra","value": "reserved"},{"effect":"NoExecute","key": "infra","value": "reserved"}]}}}'
+      restartPolicy: Never
+      serviceAccountName: argocd-server
+  backoffLimit: 4

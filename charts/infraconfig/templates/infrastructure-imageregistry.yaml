@@ -1,10 +1,11 @@
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: image-registry-storage
   namespace: openshift-image-registry
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   accessModes:
   - ReadWriteMany
@@ -13,37 +14,26 @@ spec:
       storage: 100Gi
   storageClassName: {{ .Values.registry.storageClassName }}
 ---
-apiVersion: imageregistry.operator.openshift.io/v1
-kind: Config
+apiVersion: batch/v1
+kind: Job
 metadata:
-  finalizers:
-  - imageregistry.operator.openshift.io/finalizer
-  name: cluster
+  name: imageregistry-config
+  namespace: tools
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "2"
 spec:
-  logLevel: Normal
-  managementState: Managed
-  nodeSelector:
-    node-role.kubernetes.io/infra: ""
-  observedConfig: null
-  operatorLogLevel: Normal
-  proxy: {}
-  replicas: {{ .Values.registry.replicas }}
-  requests:
-    read:
-      maxWaitInQueue: 0s
-    write:
-      maxWaitInQueue: 0s
-  rolloutStrategy: RollingUpdate
-  storage:
-    pvc:
-      claim:
-  tolerations:
-  - effect: NoSchedule
-    key: infra
-    value: reserved
-  - effect: NoExecute
-    key: infra
-    value: reserved
-  unsupportedConfigOverrides: null
+  template:
+    spec:
+      containers:
+        - name: config
+          image: quay.io/openshift/origin-cli:latest
+          command: ["oc"]
+          args:
+            - patch
+            - configs.imageregistry.operator.openshift.io/cluster
+            - --type=merge
+            - -p
+            - '{"spec": {"storage": {"pvc": {"claim": ""}}, "replicas": {{ .Values.registry.replicas | int }}, "managementState": "Managed", "nodeSelector": {"node-role.kubernetes.io/infra": ""},"tolerations": [{"effect": "NoSchedule","key": "infra","value": "reserved"},{"effect": "NoExecute","key": "infra","value": "reserved"}]}}'
+      restartPolicy: Never
+      serviceAccountName: argocd-server
+  backoffLimit: 4
