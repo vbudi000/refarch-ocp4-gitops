@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 cloudProvider: vSphere
-infrastructureId: waiops-4cnmf
+infrastructureId: ""
 
 
 vsphere:
@@ -28,3 +28,11 @@ vsphere:
     memoryMiB: 65536
     numCPUs: 16
     numCoresPerSocket: 1
+  cloudpakNodes:
+    zones: 1
+    nodeCount: 3
+    diskGiB: 120
+    memoryMiB: 32768
+    numCPUs: 8
+    numCoresPerSocket: 1
+

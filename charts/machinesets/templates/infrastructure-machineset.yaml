@@ -1,20 +1,21 @@
+{{ $test:= required "error message" .Values.infrastructureId }}
 apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
   name: {{ .Values.infrastructureId }}-infra
   namespace: openshift-machine-api
   labels:
-    machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId }}
+    machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId | quote }}
 spec:
   replicas: {{ .Values.vsphere.infraNodes.nodeCount }}
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId }}
+      machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId | quote}}
       machine.openshift.io/cluster-api-machineset: {{ .Values.infrastructureId }}-infra
   template:
     metadata:
       labels:
-        machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId }}
+        machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId | quote}}
         machine.openshift.io/cluster-api-machine-role: infra
         machine.openshift.io/cluster-api-machine-type: infra
         machine.openshift.io/cluster-api-machineset: {{ .Values.infrastructureId }}-infra
@@ -52,7 +53,7 @@ spec:
           workspace:
             datacenter: {{ .Values.vsphere.datacenter }}
             datastore: {{ .Values.vsphere.datastore }}
-            folder: /{{ .Values.vsphere.datacenter }}/vm/{{ .Values.infrastructureId }}
+            folder: /{{ .Values.vsphere.datacenter }}/vm/{{ .Values.infrastructureId | default "empty" }}
             resourcePool: /{{ .Values.vsphere.datacenter }}/host/{{ .Values.vsphere.cluster }}/Resources
             server: {{ .Values.vsphere.server }}
           {{- end}}

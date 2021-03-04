@@ -3,10 +3,10 @@ entries:
   refarch-infraconfig:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-03-03T12:40:56.504588-04:00"
+    created: "2021-03-04T11:03:00.831377-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: d92b821941a3689e2e0391052a7998c1fc2b78bac637a4b0f414585e539eb80b
+    digest: d7c574507a2dde394edbf7b3ee8753d90f821f40852227a76522228f0a3e5c14
     name: refarch-infraconfig
     type: application
     urls:
@@ -15,10 +15,10 @@ entries:
   refarch-machinesets:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-03-03T12:40:56.504939-04:00"
+    created: "2021-03-04T11:03:00.831869-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: a55bbfcff031b8f5118696bf91088ef89081bb79adf1dea627f82212c31fe11f
+    digest: 39e8676654589affc02c466b447c07b85cc95d14863ad1ca06aabbcdf2b0cb48
     name: refarch-machinesets
     type: application
     urls:
@@ -27,13 +27,13 @@ entries:
   refarch-storageconfig:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-03-03T12:40:56.505289-04:00"
+    created: "2021-03-04T11:03:00.832353-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: d3999928968c8cab5ebee21feab940c7e4bb19911536f439ce876bc191d186b9
+    digest: e7b0b9bd4d92a9ffc43a0d78cd6b158ce1e445a46a4daa553c8336f54aabce7d
     name: refarch-storageconfig
     type: application
     urls:
     - https://ncolon.github.io/refarch-ocp4-gitops/refarch-storageconfig-0.1.0.tgz
     version: 0.1.0
-generated: "2021-03-03T12:40:56.504139-04:00"
+generated: "2021-03-04T11:03:00.830518-04:00"
