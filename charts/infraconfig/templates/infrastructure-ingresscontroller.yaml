@@ -3,6 +3,8 @@ kind: Job
 metadata:
   name: ingresscontroller-config
   namespace: {{ .Values.argo.namespace | default "tools" }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
 spec:
   template:
     spec:

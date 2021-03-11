@@ -8,7 +8,7 @@ metadata:
   labels:
     operators.coreos.com/ocs-operator.openshift-storage: ""
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "102"
 spec:
   channel: {{ .Values.ocs.channel }}
   installPlanApproval: Automatic

@@ -4,6 +4,8 @@ kind: MachineSet
 metadata:
   name: {{ .Values.infrastructureId }}-infra
   namespace: openshift-machine-api
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
   labels:
     machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId | quote }}
 spec:
