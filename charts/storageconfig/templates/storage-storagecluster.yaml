@@ -21,7 +21,7 @@ spec:
         resources:
           requests:
             storage: {{ .Values.ocs.sizeGiB }}Gi
-        storageClassName: thin
+        storageClassName: {{ .Values.ocs.storageClass }}
         volumeMode: Block
       status: {}
     name: ocs-deviceset

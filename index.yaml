@@ -3,22 +3,22 @@ entries:
   refarch-infraconfig:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-03-04T17:19:22.351074-04:00"
+    created: "2021-03-11T16:23:46.024004-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: 09221c35ebab5393d8d292a1fced5acbad907e7a505f538aa4848ff926411be7
+    digest: 003d75d34645f582cf2417dbd7a1463b9f1272f05b88ce43c39eec67cafe987b
     name: refarch-infraconfig
     type: application
     urls:
-    - https://ncolon.github.io/refarch-ocp4-gitops/refarch-infraconfig-0.1.2.tgz
-    version: 0.1.2
+    - https://ncolon.github.io/refarch-ocp4-gitops/refarch-infraconfig-0.1.0.tgz
+    version: 0.1.0
   refarch-machinesets:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-03-04T17:19:22.351465-04:00"
+    created: "2021-03-11T16:23:46.024438-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: 3db563ba9fa628554370d157d5c35df2a01fcef99abac75ce50558306a70aaf5
+    digest: c574bd3041ac6477c645fc955f6a6ed2f71cb7b80c898f8cc29e12e11f986e66
     name: refarch-machinesets
     type: application
     urls:
@@ -27,13 +27,13 @@ entries:
   refarch-storageconfig:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-03-04T17:19:22.351765-04:00"
+    created: "2021-03-11T16:23:46.024815-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: 1b050b66aa11c291d2f21f49dc19a78265b0c75c08b57aa1973cba773f25063f
+    digest: 5184cc4e00959a33c28ef5bc01c4173e1f7382bbae32330b887c9f7f1d0c4994
     name: refarch-storageconfig
     type: application
     urls:
-    - https://ncolon.github.io/refarch-ocp4-gitops/refarch-storageconfig-0.1.1.tgz
-    version: 0.1.1
-generated: "2021-03-04T17:19:22.350617-04:00"
+    - https://ncolon.github.io/refarch-ocp4-gitops/refarch-storageconfig-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-03-11T16:23:46.023426-04:00"
