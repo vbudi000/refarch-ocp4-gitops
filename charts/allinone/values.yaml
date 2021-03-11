@@ -3,4 +3,6 @@ refarch-machinesets:
   infrastructureId:
 
 refarch-infraconfig:
-  argonamespace:
+  argo:
+    namespace:
+    serviceAccount:

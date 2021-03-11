@@ -18,7 +18,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: imageregistry-config
-  namespace: {{ .Values.argonamespace | default "tools" }}
+  namespace: {{ .Values.argo.namespace | default "tools" }}
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
@@ -35,5 +35,5 @@ spec:
             - -p
             - '{"spec": {"storage": {"pvc": {"claim": ""}}, "replicas": {{ .Values.registry.replicas | int }}, "managementState": "Managed", "nodeSelector": {"node-role.kubernetes.io/infra": ""},"tolerations": [{"effect": "NoSchedule","key": "infra","value": "reserved"},{"effect": "NoExecute","key": "infra","value": "reserved"}]}}'
       restartPolicy: Never
-      serviceAccountName: argocd-server
+      serviceAccountName: {{ .Values.argo.serviceAccount | deafult "argocd-server" }}
   backoffLimit: 4

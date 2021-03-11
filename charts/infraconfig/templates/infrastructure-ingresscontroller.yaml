@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: ingresscontroller-config
-  namespace: {{ .Values.argonamespace | default "tools" }}
+  namespace: {{ .Values.argo.namespace | default "tools" }}
 spec:
   template:
     spec:
@@ -19,5 +19,5 @@ spec:
             - -p
             - '{"spec": {"replicas": {{ .Values.ingress.replicas | int }}, "nodePlacement": {"nodeSelector": {"matchLabels": {"node-role.kubernetes.io/infra": ""}},"tolerations": [{"effect":"NoSchedule","key": "infra","value": "reserved"},{"effect":"NoExecute","key": "infra","value": "reserved"}]}}}'
       restartPolicy: Never
-      serviceAccountName: argocd-server
+      serviceAccountName: {{ .Values.argo.serviceAccount | deafult "argocd-server" }}
   backoffLimit: 4
