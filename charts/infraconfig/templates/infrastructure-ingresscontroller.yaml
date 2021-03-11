@@ -19,5 +19,5 @@ spec:
             - -p
             - '{"spec": {"replicas": {{ .Values.ingress.replicas | int }}, "nodePlacement": {"nodeSelector": {"matchLabels": {"node-role.kubernetes.io/infra": ""}},"tolerations": [{"effect":"NoSchedule","key": "infra","value": "reserved"},{"effect":"NoExecute","key": "infra","value": "reserved"}]}}}'
       restartPolicy: Never
-      serviceAccountName: {{ .Values.argo.serviceAccount | deafult "argocd-server" }}
+      serviceAccountName: {{ .Values.argo.serviceAccount | default "argocd-server" }}
   backoffLimit: 4
