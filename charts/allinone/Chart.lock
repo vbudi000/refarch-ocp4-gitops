@@ -1,0 +1,12 @@
+dependencies:
+- name: refarch-machinesets
+  repository: https://ncolon.github.io/refarch-ocp4-gitops
+  version: 0.1.0
+- name: refarch-storageconfig
+  repository: https://ncolon.github.io/refarch-ocp4-gitops
+  version: 0.1.0
+- name: refarch-infraconfig
+  repository: https://ncolon.github.io/refarch-ocp4-gitops
+  version: 0.1.0
+digest: sha256:2f836b5fda1082192cf68d439fb131e491bccbff8ef3228c1193486b3054fadb
+generated: "2021-03-11T16:36:31.155413-04:00"
