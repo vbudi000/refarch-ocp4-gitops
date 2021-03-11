@@ -5,10 +5,3 @@ publish:
 	git add .
 	git commit -m "charts"
 	git push
-	sleep 5
-	cd charts/allinone
-	helm dep up
-	cd ../../
-	git add .
-	git commit -m "charts"
-	git push
