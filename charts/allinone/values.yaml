@@ -1,3 +1,6 @@
 refarch-machinesets:
   cloudProvider: 
   infrastructureId:
+
+refarch-infraconfig:
+  argonamespace:
