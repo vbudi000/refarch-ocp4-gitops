@@ -18,7 +18,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: imageregistry-config
-  namespace: tools
+  namespace: {{ .Values.argonamespace | default "tools" }}
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:

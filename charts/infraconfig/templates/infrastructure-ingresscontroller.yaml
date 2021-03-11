@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: ingresscontroller-config
-  namespace: tools
+  namespace: {{ .Values.argonamespace | default "tools" }}
 spec:
   template:
     spec:
