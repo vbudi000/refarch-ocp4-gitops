@@ -6,6 +6,7 @@ metadata:
   namespace: openshift-machine-api
   annotations:
     argocd.argoproj.io/sync-wave: "0"
+    helm.sh/hook-weight: "0"
   labels:
     machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId | quote }}
 spec:

@@ -5,6 +5,7 @@ metadata:
   namespace: openshift-storage
   annotations:
     argocd.argoproj.io/sync-wave: "101"
+    helm.sh/hook-weight: "101"
 apiVersion: v1
 data:
   CSI_LOG_LEVEL: "5"

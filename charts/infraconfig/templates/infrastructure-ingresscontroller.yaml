@@ -5,6 +5,7 @@ metadata:
   namespace: {{ .Values.argo.namespace | default "tools" }}
   annotations:
     argocd.argoproj.io/sync-wave: "100"
+    helm.sh/hook-weight: "100"
 spec:
   template:
     spec:

@@ -5,6 +5,7 @@ metadata:
   namespace: openshift-monitoring
   annotations:
     argocd.argoproj.io/sync-wave: "100"
+    helm.sh/hook-weight: "100"
 data:
   config.yaml: |+
     alertmanagerMain:

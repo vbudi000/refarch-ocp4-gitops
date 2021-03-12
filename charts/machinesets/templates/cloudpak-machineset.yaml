@@ -5,7 +5,8 @@ kind: MachineConfigPool
 metadata:
   name: cp4x
   annotations:
-    argocd.argoproj.io/sync-wave: "0"  
+    argocd.argoproj.io/sync-wave: "0"
+    helm.sh/hook-weight: "0"
 spec:
   machineConfigSelector:
     matchExpressions:
@@ -20,6 +21,7 @@ metadata:
   name: cp4x-containerruntimeconfig
   annotations:
     argocd.argoproj.io/sync-wave: "0"
+    helm.sh/hook-weight: "0"
 spec:
   machineConfigPoolSelector:
     matchLabels:
@@ -34,6 +36,7 @@ metadata:
   namespace: openshift-cluster-node-tuning-operator
   annotations:
     argocd.argoproj.io/sync-wave: "0"
+    helm.sh/hook-weight: "0"
 spec:
   profile:
   - name: cp4x-tuned
@@ -64,6 +67,7 @@ metadata:
   namespace: openshift-machine-api
   annotations:
     argocd.argoproj.io/sync-wave: "1"
+    helm.sh/hook-weight: "1"
 spec:
   replicas: {{ .Values.vsphere.cloudpakNodes.nodeCount }}
   selector:

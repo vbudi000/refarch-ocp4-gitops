@@ -8,5 +8,6 @@ metadata:
   name: openshift-storage
   annotations:
     argocd.argoproj.io/sync-wave: "100"
+    helm.sh/hook-weight: "100"
 spec: {}
 {{- end }}
