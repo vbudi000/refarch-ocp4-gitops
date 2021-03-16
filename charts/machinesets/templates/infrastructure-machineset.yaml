@@ -59,4 +59,4 @@ spec:
             folder: /{{ .Values.vsphere.datacenter }}/vm/{{ .Values.infrastructureId | default "empty" }}
             resourcePool: /{{ .Values.vsphere.datacenter }}/host/{{ .Values.vsphere.cluster }}/Resources
             server: {{ .Values.vsphere.server }}
-          {{- end}}
+          {{- end }}
