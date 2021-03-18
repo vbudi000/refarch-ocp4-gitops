@@ -1,6 +1,5 @@
 refarch-machinesets:
   cloudProvider: vSphere
-  infrastructureId:
   vsphere:
     networkName: vdpg-192.168.100
     datacenter: dc01
