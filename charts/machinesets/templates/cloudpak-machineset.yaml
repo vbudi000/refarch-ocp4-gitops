@@ -1,4 +1,4 @@
-{{ $infraid:= (lookup "config.openshift.io/v1" "Infrastructure" "" "cluster").status.infrastructureName }}
+{{ $infraid:= required "You need to provide the infrastructureID of your cluster in your values.yaml file" .Values.infrastructureId }}
 
 ---
 apiVersion: machineconfiguration.openshift.io/v1
@@ -63,8 +63,8 @@ apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
   labels:
-    machine.openshift.io/cluster-api-cluster: {{ $infraid }}
-  name: {{ $infraid }}-cp4x
+    machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId }}
+  name: {{ .Values.infrastructureId }}-cp4x
   namespace: openshift-machine-api
   annotations:
     argocd.argoproj.io/sync-wave: "1"
@@ -73,15 +73,15 @@ spec:
   replicas: {{ .Values.vsphere.cloudpakNodes.nodeCount }}
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-cluster: {{ $infraid }}
-      machine.openshift.io/cluster-api-machineset: {{ $infraid }}-cp4x
+      machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId }}
+      machine.openshift.io/cluster-api-machineset: {{ .Values.infrastructureId }}-cp4x
   template:
     metadata:
       labels:
-        machine.openshift.io/cluster-api-cluster: {{ $infraid }}
+        machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId }}
         machine.openshift.io/cluster-api-machine-role: worker
         machine.openshift.io/cluster-api-machine-type: worker
-        machine.openshift.io/cluster-api-machineset: {{ $infraid }}-cp4x
+        machine.openshift.io/cluster-api-machineset: {{ .Values.infrastructureId }}-cp4x
     spec:
       metadata:
         labels:
@@ -103,13 +103,13 @@ spec:
           numCPUs: {{ .Values.vsphere.cloudpakNodes.numCPUs }}
           numCoresPerSocket: {{ .Values.vsphere.cloudpakNodes.numCoresPerSocket }}
           snapshot: ""
-          template: {{ $infraid }}-rhcos
+          template: {{ .Values.infrastructureId }}-rhcos
           userDataSecret:
             name: worker-user-data
           workspace:
             datacenter: {{ .Values.vsphere.datacenter }}
             datastore: {{ .Values.vsphere.datastore }}
-            folder: /{{ .Values.vsphere.datacenter }}/vm/{{ $infraid }}
+            folder: /{{ .Values.vsphere.datacenter }}/vm/{{ .Values.infrastructureId }}
             resourcePool: /{{ .Values.vsphere.datacenter }}/host/{{ .Values.vsphere.cluster }}/Resources
             server: {{ .Values.vsphere.server }}
           {{- end }}
