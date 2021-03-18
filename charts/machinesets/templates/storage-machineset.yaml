@@ -1,27 +1,28 @@
-{{ $infraid:= required "You need to provide the infrastructureID of your cluster in your values.yaml file" .Values.infrastructureId }}
+{{ $infraid:= (lookup "config.openshift.io/v1" "Infrastructure" "" "cluster").status.infrastructureName }}
+
 apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
-  name: {{ .Values.infrastructureId }}-storage
+  name: {{ $infraid }}-storage
   namespace: openshift-machine-api
   annotations:
     argocd.argoproj.io/sync-wave: "0"
     helm.sh/hook-weight: "0"
   labels:
-    machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId }}
+    machine.openshift.io/cluster-api-cluster: {{ $infraid }}
 spec:
   replicas: {{ .Values.vsphere.storageNodes.nodeCount }}
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId }}
-      machine.openshift.io/cluster-api-machineset: {{ .Values.infrastructureId }}-storage
+      machine.openshift.io/cluster-api-cluster: {{ $infraid }}
+      machine.openshift.io/cluster-api-machineset: {{ $infraid }}-storage
   template:
     metadata:
       labels:
-        machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId }}
+        machine.openshift.io/cluster-api-cluster: {{ $infraid }}
         machine.openshift.io/cluster-api-machine-role: storage
         machine.openshift.io/cluster-api-machine-type: storage
-        machine.openshift.io/cluster-api-machineset: {{ .Values.infrastructureId }}-storage
+        machine.openshift.io/cluster-api-machineset: {{ $infraid }}-storage
     spec:
       taints:
       - effect: NoSchedule
@@ -48,13 +49,13 @@ spec:
           numCPUs: {{ .Values.vsphere.storageNodes.numCPUs }}
           numCoresPerSocket: {{ .Values.vsphere.storageNodes.numCoresPerSocket }}
           snapshot: ""
-          template: {{ .Values.infrastructureId }}-rhcos
+          template: {{ $infraid }}-rhcos
           userDataSecret:
             name: worker-user-data
           workspace:
             datacenter: {{ .Values.vsphere.datacenter }}
             datastore: {{ .Values.vsphere.datastore }}
-            folder: /{{ .Values.vsphere.datacenter }}/vm/{{ .Values.infrastructureId }}
+            folder: /{{ .Values.vsphere.datacenter }}/vm/{{ $infraid }}
             resourcePool: /{{ .Values.vsphere.datacenter }}/host/{{ .Values.vsphere.cluster }}/Resources
             server: {{ .Values.vsphere.server }}
           {{- end }}
