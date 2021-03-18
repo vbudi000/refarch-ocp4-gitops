@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   ibm-refarch:
   - apiVersion: v2
-    created: "2021-03-18T16:16:22.796868-04:00"
+    created: "2021-03-18T16:17:26.217912-04:00"
     dependencies:
     - name: refarch-machinesets
       repository: https://ncolon.github.io/refarch-ocp4-gitops
@@ -14,7 +14,7 @@ entries:
       repository: https://ncolon.github.io/refarch-ocp4-gitops
       version: 0.1.10
     description: A Helm chart for Kubernetes
-    digest: 3c0c9ed8831bc0fcc7ddd85c7b6dd54a348a0cfba55a4a18ed80fb187dfa3c31
+    digest: 76f43ca0a56e6568b6fc84e73cc0129044721f989b90ceacad2161d6f152a310
     name: ibm-refarch
     urls:
     - https://ncolon.github.io/refarch-ocp4-gitops/ibm-refarch-0.1.11.tgz
@@ -22,10 +22,10 @@ entries:
   refarch-infraconfig:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-03-18T16:16:22.798837-04:00"
+    created: "2021-03-18T16:17:26.218273-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: f2e356d901e3c2e9a3c2c5660cc1a69d78c8f142c1c9ca7ff211b9a023936f75
+    digest: adb91c6f285f938002f623fabf1ae4ad3dcf2b9ba2841e1387a0fef36e614673
     name: refarch-infraconfig
     type: application
     urls:
@@ -34,10 +34,10 @@ entries:
   refarch-machinesets:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-03-18T16:16:22.799218-04:00"
+    created: "2021-03-18T16:17:26.21868-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: 1f3c06a1a9212c53305c9722727c4465f2c06763cf28eeb4acc1aee0c12f68c2
+    digest: 048c30fd5a988de6e75fa8c22329449ea2113434a95e9dd32933dd4016b56d6b
     name: refarch-machinesets
     type: application
     urls:
@@ -46,13 +46,13 @@ entries:
   refarch-storageconfig:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-03-18T16:16:22.799595-04:00"
+    created: "2021-03-18T16:17:26.219048-04:00"
     description: A Helm chart for deploying infrastrucure reference architecture to
       OpenShift 4.x clusters
-    digest: 9929db74645a675534c91cd58ac19eac9ec12fdef7de8fe8923e147a75cc8061
+    digest: e07cf2cda43517483e832f1f63514df1e222cf48f00f76abc53dd5f3430609bb
     name: refarch-storageconfig
     type: application
     urls:
     - https://ncolon.github.io/refarch-ocp4-gitops/refarch-storageconfig-0.1.10.tgz
     version: 0.1.10
-generated: "2021-03-18T16:16:22.795272-04:00"
+generated: "2021-03-18T16:17:26.216558-04:00"
