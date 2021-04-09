@@ -1,34 +1,31 @@
 # Default values for refarch-ocp4-gitops.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+infrastructureId: "prodref01-xdds6"
 
-cloudProvider: vSphere
+cloudProvider: aws
 
-vsphere:
-  networkName: vdpg-192.168.100
-  datacenter: dc01
-  datastore: openshift
-  cluster: cluster01
-  server: vcsa67.rtp.raleigh.ibm.com
+aws:
+  region: us-east-2
+  zones:
+  - us-east-1a
+  - us-east-1b
+  - us-east-1c
+  image: ami-046fe691f52a953f9
   infraNodes:
-    zones: 1
-    nodeCount: 3
-    diskGiB: 120
-    memoryMiB: 16384
-    numCPUs: 4
-    numCoresPerSocket: 1
+    nodeCount: 1
+    volumeSize: 120
+    volumeType: gp2
+    instanceType: m5.xlarge
   storageNodes:
     zones: 1
     nodeCount: 3
-    diskGiB: 120
-    memoryMiB: 65536
-    numCPUs: 16
-    numCoresPerSocket: 1
+    volumeSize: 120
+    volumeType: gp2
+    instanceType: m5.4xlarge
   cloudpakNodes:
     zones: 1
     nodeCount: 0
-    diskGiB: 120
-    memoryMiB: 32768
-    numCPUs: 8
-    numCoresPerSocket: 1
-
+    volumeSize: 120
+    volumeType: gp2
+    instanceType: m5.xlarge

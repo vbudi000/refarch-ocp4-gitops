@@ -1,0 +1,3 @@
+oc patch -n openshift-ingress-operator ingresscontroller.operator.openshift.io/default --type=merge -p '{"spec": {"replicas": 2, "nodePlacement": {"nodeSelector": {"matchLabels": {"node-role.kubernetes.io/infra": ""}},"tolerations": [{"effect":"NoSchedule","key": "infra","value": "reserved"},{"effect":"NoExecute","key": "infra","value": "reserved"}]}}}'
+oc patch configs.imageregistry.operator.openshift.io/cluster --type=merge -p '{"spec": {"replicas": 1, "nodeSelector": {"node-role.kubernetes.io/infra": ""},"tolerations": [{"effect": "NoSchedule","key": "infra","value": "reserved"},{"effect": "NoExecute","key": "infra","value": "reserved"}]}}'
+

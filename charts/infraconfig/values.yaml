@@ -7,7 +7,6 @@ argo:
   serviceAccount: argocd-server
 
 registry:
-  storageClassName: ocs-storagecluster-cephfs
   replicas: 2
 
 ingress:

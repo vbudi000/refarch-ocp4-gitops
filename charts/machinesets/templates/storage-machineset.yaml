@@ -1,27 +1,29 @@
 {{ $infraid:= required "You need to provide the infrastructureID of your cluster in your values.yaml file" .Values.infrastructureId }}
+{{- range .Values.aws.zones }}
+---
 apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
-  name: {{ .Values.infrastructureId }}-storage
+  name: {{ $.Values.infrastructureId }}-storage-{{ . | title }}
   namespace: openshift-machine-api
   annotations:
     argocd.argoproj.io/sync-wave: "0"
     helm.sh/hook-weight: "0"
   labels:
-    machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId }}
+    machine.openshift.io/cluster-api-cluster: {{ $.Values.infrastructureId }}
 spec:
-  replicas: {{ .Values.vsphere.storageNodes.nodeCount }}
+  replicas: {{ $.Values.aws.storageNodes.nodeCount }}
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId }}
-      machine.openshift.io/cluster-api-machineset: {{ .Values.infrastructureId }}-storage
+      machine.openshift.io/cluster-api-cluster: {{ $.Values.infrastructureId  }}
+      machine.openshift.io/cluster-api-machineset: {{ $.Values.infrastructureId }}-storage-{{ . | title }}
   template:
     metadata:
       labels:
-        machine.openshift.io/cluster-api-cluster: {{ .Values.infrastructureId }}
+        machine.openshift.io/cluster-api-cluster: {{ $.Values.infrastructureId }}
         machine.openshift.io/cluster-api-machine-role: storage
         machine.openshift.io/cluster-api-machine-type: storage
-        machine.openshift.io/cluster-api-machineset: {{ .Values.infrastructureId }}-storage
+        machine.openshift.io/cluster-api-machineset: {{ $.Values.infrastructureId }}-storage-{{ . | title }}
     spec:
       taints:
       - effect: NoSchedule
@@ -33,28 +35,38 @@ spec:
           cluster.ocs.openshift.io/openshift-storage: ""
       providerSpec:
         value:
-          {{- if eq .Values.cloudProvider "vSphere" }}
-          apiVersion: vsphereprovider.openshift.io/v1beta1
+          {{- if eq $.Values.cloudProvider "aws" }}
+          apiVersion: awsprovider.openshift.io/v1beta1
           credentialsSecret:
-            name: vsphere-cloud-credentials
-          diskGiB: {{ .Values.vsphere.storageNodes.diskGiB }}
-          kind: VSphereMachineProviderSpec
-          memoryMiB: {{ .Values.vsphere.storageNodes.memoryMiB }}
-          metadata:
-            creationTimestamp: null
-          network:
-            devices:
-            - networkName: {{ .Values.vsphere.networkName }}
-          numCPUs: {{ .Values.vsphere.storageNodes.numCPUs }}
-          numCoresPerSocket: {{ .Values.vsphere.storageNodes.numCoresPerSocket }}
-          snapshot: ""
-          template: {{ .Values.infrastructureId }}-rhcos
+            name: aws-cloud-credentials
+          kind: AWSMachineProviderSpec
           userDataSecret:
             name: worker-user-data
-          workspace:
-            datacenter: {{ .Values.vsphere.datacenter }}
-            datastore: {{ .Values.vsphere.datastore }}
-            folder: /{{ .Values.vsphere.datacenter }}/vm/{{ .Values.infrastructureId }}
-            resourcePool: /{{ .Values.vsphere.datacenter }}/host/{{ .Values.vsphere.cluster }}/Resources
-            server: {{ .Values.vsphere.server }}
+          placement:
+            availabilityZone: {{ . | title }}
+            region: {{ $.Values.aws.region }}
+          instanceType: {{ $.Values.aws.storageNodes.instanceType }}
+          blockDevices:
+          - ebs:
+            iops: 0
+            volumeSize: {{ $.Values.aws.storageNodes.volumeSize }}
+            volumeType: {{ $.Values.aws.storageNodes.volumeType }}
+          ami:
+            id: {{ $.Values.aws.image }}
+          subnet:
+            filters:
+            - name: tag:Name
+              values:
+              - {{ $.Values.infrastructureId }}-private-{{ . | title }}
+          iamInstanceProfile:
+            id: {{ $.Values.infrastructureId }}>-worker-profile
+          securityGroups:
+          - filters:
+            - name: tag:Name
+              values:
+              - {{ $.Values.infrastructureId }}-worker-sg
+          tags:
+          - name: kubernetes.io/cluster/{{ $.Values.infrastructureId }}
+            value: owned
           {{- end }}
+{{- end }}

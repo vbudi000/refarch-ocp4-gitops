@@ -7,7 +7,4 @@ ocs:
   channel: stable-4.6
   version: 4.6.3
   sizeGiB: 512
-  storageClass: thin
-
-
-
+  storageClass: gp2
